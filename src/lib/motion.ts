@@ -5,7 +5,7 @@
 import type { Variants, Transition } from "framer-motion";
 
 /** Smooth "expensive" easing — no bounce. */
-export const EASE: Transition["ease"] = [0.16, 1, 0.3, 1];
+export const EASE = [0.16, 1, 0.3, 1] as const;
 
 export const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
