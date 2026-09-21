@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-ink text-ivory font-sans;
+  }
+  ::selection {
+    background: #a52a1d;
+    color: #f4f0e8;
+  }
+  /* Respect reduced motion for CSS-driven transitions too */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Small uppercase tracked label used above headings */
+  .eyebrow {
+    @apply font-sans text-[11px] uppercase tracking-eyebrow text-ivory-muted;
+  }
+  /* Horizontal scroller without a visible scrollbar (mobile categories) */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Review marquee: track holds two copies, so -50% (minus half the gap) loops seamlessly */
+.marquee { overflow: hidden; }
+.marquee-track { animation: marquee 55s linear infinite; }
+@keyframes marquee {
+  to { transform: translateX(calc(-50% - 0.625rem)); }
+}
+
